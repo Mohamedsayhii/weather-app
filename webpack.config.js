@@ -1,53 +1,55 @@
 /* eslint-disable global-require */
-import { resolve } from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-export const mode = 'development';
-export const entry = './src/index.js';
-export const devServer = {
-    static: './dist',
-};
-export const plugins = [
-    new HtmlWebpackPlugin({
-        template: './src/template.html',
-        title: '',
-        favicon: '',
-    }),
-];
-export const output = {
-    filename: 'main.js',
-    path: resolve(__dirname, 'dist'),
-    clean: true,
-};
-export const module = {
-    rules: [
-        {
-            test: /\.html$/,
-            use: ['html-loader'],
-        },
+module.exports = {
+    mode: 'production',
+    entry: './src/index.js',
+    devServer: {
+        static: './dist',
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/template.html',
+            favicon: '',
+        }),
+    ],
+    output: {
+        filename: 'main.js',
+        path: path.resolve(__dirname, 'dist'),
+        clean: true,
+    },
 
-        {
-            test: /\.s[ac]ss$/i,
-            use: [
-                'style-loader',
-                'css-loader',
-                {
-                    loader: 'sass-loader',
+    module: {
+        rules: [
+            {
+                test: /\.html$/,
+                use: ['html-loader'],
+            },
+
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            implementation: require('sass'),
+                        },
+                    },
+                ],
+            },
+
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+                use: {
                     options: {
-                        implementation: require('sass'),
+                        outputPath: 'imgs',
                     },
                 },
-            ],
-        },
-
-        {
-            test: /\.(png|svg|jpg|jpeg|gif)$/i,
-            type: 'asset/resource',
-            use: {
-                options: {
-                    outputPath: 'imgs',
-                },
             },
-        },
-    ],
+        ],
+    },
 };
