@@ -5,13 +5,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'production',
     entry: './src/index.js',
+    performance: {
+        hints: false,
+    },
     devServer: {
         static: './dist',
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/template.html',
-            favicon: '',
+            favicon: './src/assets/icon.png',
         }),
     ],
     output: {
@@ -28,7 +31,7 @@ module.exports = {
             },
 
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.scss$/i,
                 use: [
                     'style-loader',
                     'css-loader',
@@ -44,11 +47,6 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
-                use: {
-                    options: {
-                        outputPath: 'imgs',
-                    },
-                },
             },
         ],
     },
