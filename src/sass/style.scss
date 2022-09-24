@@ -135,6 +135,10 @@ input[type='text']::placeholder {
     height: 10rem;
     padding-left: 3.5rem;
     justify-content: space-between;
+
+    p {
+        width: max-content;
+    }
 }
 
 .feels-like {

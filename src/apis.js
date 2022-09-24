@@ -13,21 +13,14 @@ const weatherData = async (location) => {
     const cityName = await response1.json();
     const data = await response2.json();
 
-    console.log(`${cityName.location.name}, ${cityName.location.country}`);
-    console.log(data.weather[0].description);
-    console.log(
+    return [
+        `${cityName.location.name.toUpperCase()}, ${cityName.location.country.toUpperCase()}`,
+        data.weather[0].description.toUpperCase(),
         Math.round(data.main.temp - 273.15),
         Math.round(data.main.feels_like - 273.15),
-        `${Math.round(data.main.humidity)}%`
-    );
-    console.log(Math.round(data.wind.speed * 3.6 * 10) / 10);
+        Math.round(data.wind.speed * 3.6 * 10) / 10,
+        Math.round(data.main.humidity),
+    ];
 };
 
-const form = document.querySelector('form');
-const input = document.querySelector('input');
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const city = input.value;
-    weatherData(city);
-});
+export default weatherData;
