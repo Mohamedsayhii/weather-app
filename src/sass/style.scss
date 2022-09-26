@@ -74,7 +74,6 @@ input[type='text']::placeholder {
 }
 
 .error-msg {
-    display: hidden;
     position: absolute;
     left: 2rem;
     color: #ff3333;
@@ -87,10 +86,6 @@ input[type='text']::placeholder {
     top: 30%;
     margin-left: 10%;
     color: #f3f3f3;
-    // background: rgba(255, 255, 255, 0.8);
-    // padding: 20px;
-    // border-radius: 5px;
-    // box-shadow: 0 5px 25px rgb(1 1 1 / 5%);
 }
 
 .condition {
@@ -183,5 +178,53 @@ input[type='text']::placeholder {
     }
     100% {
         opacity: 1;
+    }
+}
+
+@media (max-width: 800px) {
+    header {
+        height: 5.5rem;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    #main-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-weather-display {
+        position: static;
+        top: 30%;
+        margin-top: 15rem;
+        color: #f3f3f3;
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+        align-items: center;
+    }
+
+    .form-group {
+        float: right;
+        height: 80%;
+        position: relative;
+        margin: 2.5rem 0 0 0;
+    }
+
+    .weather-details {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5rem;
+        font-weight: 900;
+        letter-spacing: 0.1rem;
+        position: static;
+        border-left: none;
+        /* top: 45%; */
+        /* left: 22.5rem; */
+        height: 10rem;
+        padding-left: 0;
+        justify-content: space-between;
     }
 }
