@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+
 const weatherData = async (location) => {
     const [response1, response2] = await Promise.all([
         fetch(
@@ -20,6 +22,8 @@ const weatherData = async (location) => {
         Math.round(data.main.feels_like - 273.15),
         Math.round(data.wind.speed * 3.6 * 10) / 10,
         Math.round(data.main.humidity),
+        data.weather[0].main,
+        data.weather[0].icon,
     ];
 };
 
