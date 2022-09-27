@@ -44,7 +44,7 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const city = input.value;
     const data = await weatherData(city).catch((err) => {
-        if (err.message === 'o.location is undefined') {
+        if (err.message === 'cityName.location is undefined') {
             error.style.display = 'block';
             if (error.classList.contains('fade-in')) {
                 error.style.display = 'none';
