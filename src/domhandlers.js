@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable prefer-destructuring */
-// import partlyCloudy from './assets/partly-cloudy.jpg';
 
 import weatherData from './apis';
 
@@ -45,7 +44,7 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const city = input.value;
     const data = await weatherData(city).catch((err) => {
-        if (err.message === 'cityName.location is undefined') {
+        if (err.message === 'o.location is undefined') {
             error.style.display = 'block';
             if (error.classList.contains('fade-in')) {
                 error.style.display = 'none';
@@ -59,7 +58,6 @@ form.addEventListener('submit', async (e) => {
     });
 
     if (data) {
-        console.log(data);
         displayWeather(data);
     }
 });
