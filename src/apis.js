@@ -3,7 +3,7 @@
 const weatherData = async (location) => {
     const [response1, response2] = await Promise.all([
         fetch(
-            `http://api.weatherapi.com/v1/forecast.json?key=2fc531ab42724d4ba6a110316222409&q=${location}`,
+            `http://api.weatherapi.com/v1/forecast.json?key=7abf249092cd41b1824162213230108&q=${location}`,
             { mode: 'cors' }
         ),
         fetch(
